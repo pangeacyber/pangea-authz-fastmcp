@@ -993,7 +993,7 @@ dev = [
 requires-dist = [
     { name = "beaupy", marker = "extra == 'cli'", specifier = ">=3.10.1" },
     { name = "cyclopts", marker = "extra == 'cli'", specifier = ">=3.22.2" },
-    { name = "fastmcp", specifier = ">=2.10.2" },
+    { name = "fastmcp", specifier = ">=2.10.5" },
     { name = "google-api-python-client", marker = "extra == 'cli'", specifier = ">=2.176.0" },
     { name = "google-auth-httplib2", marker = "extra == 'cli'", specifier = ">=0.2.0" },
     { name = "google-auth-oauthlib", marker = "extra == 'cli'", specifier = ">=1.2.2" },
