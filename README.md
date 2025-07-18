@@ -19,6 +19,24 @@ pip install -U pangea-authz-fastmcp
    panel. Click the **AuthZ** service to enable it.
 3. In the modal, there will be a prompt to create a new Pangea API token or to
    extend an existing one. Choose **Create a new token** and click on **Done**.
+4. An additional dialog of example schemas will appear. Select **Blank Schema**
+   and then click **Done**.
+5. From this AuthZ Overview page, click on **Resource Types**. We'll want to
+   create the following resource types:
+
+![AuthZ admin resource type](./.github/assets/authz-resource-type-admin.png)
+![AuthZ group resource type](./.github/assets/authz-resource-type-group.png)
+![AuthZ tool resource type](./.github/assets/authz-resource-type-tool.png)
+![AuthZ user resource type](./.github/assets/authz-resource-type-user.png)
+
+6. Click on **Roles & Access**. We'll want to configure the following roles:
+
+![AuthZ admin role](./.github/assets/authz-role-admin.png)
+![AuthZ group member role](./.github/assets/authz-role-group-member.png)
+![AuthZ tool caller role](./.github/assets/authz-role-tool-caller.png)
+
+7. Click on **Assigned Roles & Relations**. From this page one can assign users
+   or groups to be callers of select tools.
 
 ## Usage
 
