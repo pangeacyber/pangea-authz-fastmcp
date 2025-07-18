@@ -37,7 +37,7 @@ cli = [
 [dependency-groups]
 dev = [
     "google-api-python-client-stubs==1.29.0",
-    "mypy==1.16.1",
+    "mypy==1.17.0",
     "pangea-authn-fastmcp==0.2.0",
     "pytest==8.4.1",
     "pytest-asyncio==1.0.0",
