@@ -19,8 +19,10 @@ import pangea_authz_fastmcp
 from pangea_authz_fastmcp.cli.transports import CompositeMCPConfigTransport
 
 _DEFAULT_SUBJECT_TYPE = "group"
-_DEFAULT_RELATION = "caller"
-_DEFAULT_RESOURCE_TYPE = "tool"
+_DEFAULT_RESOURCE_RELATION = "reader"
+_DEFAULT_TOOL_RELATION = "caller"
+_DEFAULT_RESOURCE_RESOURCE_TYPE = "resource"
+_DEFAULT_TOOL_RESOURCE_TYPE = "tool"
 
 if sys.platform == "linux" or sys.platform == "linux2":
     _CLIENT_PATHS = {
@@ -47,7 +49,7 @@ else:
     _WELL_KNOWN_MCP_PATHS = []
 
 
-app = cyclopts.App(name="pangea-authz-fastmcp", help="TODO", version=pangea_authz_fastmcp.__version__)
+app = cyclopts.App(name="pangea-authz-fastmcp", version=pangea_authz_fastmcp.__version__)
 
 
 @app.command
@@ -79,9 +81,21 @@ async def google_workspace(
     files: Annotated[
         list[str], cyclopts.Parameter("--files", help="Files to discover MCP servers from.")
     ] = _WELL_KNOWN_MCP_PATHS,
-    subject_type: Annotated[str, cyclopts.Parameter("--subject-type")] = _DEFAULT_SUBJECT_TYPE,
-    relation: Annotated[str, cyclopts.Parameter("--relation")] = _DEFAULT_RELATION,
-    resource_type: Annotated[str, cyclopts.Parameter("--resource-type")] = _DEFAULT_RESOURCE_TYPE,
+    subject_type: Annotated[
+        str, cyclopts.Parameter("--subject-type", help="Pangea AuthZ subject type.")
+    ] = _DEFAULT_SUBJECT_TYPE,
+    resource_relation: Annotated[
+        str, cyclopts.Parameter("--resource-relation", help="Pangea AuthZ tuple relation for MCP resources.")
+    ] = _DEFAULT_RESOURCE_RELATION,
+    tool_relation: Annotated[
+        str, cyclopts.Parameter("--tool-relation", help="Pangea AuthZ tuple relation for MCP tools.")
+    ] = _DEFAULT_TOOL_RELATION,
+    resource_resource_type: Annotated[
+        str, cyclopts.Parameter("--resource-resource-type", help="Pangea AuthZ resource type for MCP resources.")
+    ] = _DEFAULT_RESOURCE_RESOURCE_TYPE,
+    tool_resource_type: Annotated[
+        str, cyclopts.Parameter("--tool-resource-type", help="Pangea AuthZ resource type for MCP tools.")
+    ] = _DEFAULT_TOOL_RESOURCE_TYPE,
 ) -> None:
     pangea_authz_token = os.getenv("PANGEA_AUTHZ_TOKEN")
     if not pangea_authz_token:
@@ -128,24 +142,44 @@ async def google_workspace(
         tools = await mcp_client.list_tools()
         tool_names = {tool.name for tool in tools}
 
-    print("Which tools would you like these groups to be able to call?")
-    selected_tools = select_multiple(sorted(tool_names))
-    print()
+        resources = await mcp_client.list_resources()
+        resource_uris = {resource.uri for resource in resources}
+
+    selected_resources = []
+    selected_tools = []
+    if len(resource_uris) > 0:
+        print("Which resources would you like these groups to be able to read?")
+        selected_resources = select_multiple(sorted(resource_uris), preprocessor=str)
+        print()
+
+    if len(tool_names) > 0:
+        print("Which tools would you like these groups to be able to call?")
+        selected_tools = select_multiple(sorted(tool_names))
+        print()
 
     authz = AuthZ(token=pangea_authz_token)
     authz.tuple_create(
         [
             Tuple(
                 subject=Subject(type=subject_type, id=group["id"], action="member"),
-                relation=relation,
-                resource=Resource(type=resource_type, id=tool),
+                relation=resource_relation,
+                resource=Resource(type=resource_resource_type, id=pangea_authz_fastmcp.sanitize_resource_uri(resource)),
+            )
+            for resource in selected_resources
+            for group in selected_groups
+        ]
+        + [
+            Tuple(
+                subject=Subject(type=subject_type, id=group["id"], action="member"),
+                relation=tool_relation,
+                resource=Resource(type=tool_resource_type, id=tool),
             )
             for tool in selected_tools
             for group in selected_groups
         ]
     )
 
-    print(f"Created {len(selected_groups) * len(selected_tools)} AuthZ tuples.")
+    print(f"Created {len(selected_groups) * (len(selected_resources) + len(selected_tools))} AuthZ tuples.")
 
     await mcp_client.close()
     sys.exit(0)
