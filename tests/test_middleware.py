@@ -9,10 +9,13 @@ from pangea_authz_fastmcp import PangeaAuthzMiddleware
 if TYPE_CHECKING:
     from fastmcp.server.dependencies import AccessToken
     from fastmcp.server.middleware import MiddlewareContext
-    from mcp.types import CallToolRequestParams
+    from mcp.types import CallToolRequestParams, ReadResourceRequestParams
 
 
-async def get_subject_ids(access_token: AccessToken, context: MiddlewareContext[CallToolRequestParams]) -> list[str]:
+async def get_subject_ids(
+    access_token: AccessToken,
+    context: MiddlewareContext[CallToolRequestParams] | MiddlewareContext[ReadResourceRequestParams],
+) -> list[str]:
     return ["id1", "id2"]
 
 

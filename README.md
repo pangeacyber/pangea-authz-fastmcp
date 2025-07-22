@@ -26,6 +26,7 @@ pip install -U pangea-authz-fastmcp
 
 ![AuthZ admin resource type](./.github/assets/authz-resource-type-admin.png)
 ![AuthZ group resource type](./.github/assets/authz-resource-type-group.png)
+![AuthZ resource resource type](./.github/assets/authz-resource-type-resource.png)
 ![AuthZ tool resource type](./.github/assets/authz-resource-type-tool.png)
 ![AuthZ user resource type](./.github/assets/authz-resource-type-user.png)
 
@@ -33,10 +34,11 @@ pip install -U pangea-authz-fastmcp
 
 ![AuthZ admin role](./.github/assets/authz-role-admin.png)
 ![AuthZ group member role](./.github/assets/authz-role-group-member.png)
+![AuthZ resource reader role](./.github/assets/authz-role-resource-reader.png)
 ![AuthZ tool caller role](./.github/assets/authz-role-tool-caller.png)
 
 7. Click on **Assigned Roles & Relations**. From this page one can assign users
-   or groups to be callers of select tools.
+   or groups to be callers of select tools or readers of select resources.
 
 ## Usage
 
@@ -50,12 +52,15 @@ import os
 
 from fastmcp.server.dependencies import AccessToken
 from fastmcp.server.middleware import MiddlewareContext
-from mcp.types import CallToolRequestParams
+from mcp.types import CallToolRequestParams, ReadResourceRequestParams
 
 from pangea_authz_fastmcp import PangeaAuthzMiddleware
 
 
-async def get_subject_ids(access_token: AccessToken, context: MiddlewareContext[CallToolRequestParams]) -> list[str]:
+async def get_subject_ids(
+    access_token: AccessToken,
+    context: MiddlewareContext[CallToolRequestParams] | MiddlewareContext[ReadResourceRequestParams],
+) -> list[str]:
     # Fetch the subject ID(s) for the given access token. For example, this can
     # be just the associated user ID, or it can be a list of group IDs that the
     # user is a member of. How this function is implemented will depend on the
@@ -116,18 +121,21 @@ Prerequisites:
 ```
 Usage: pangea-authz-fastmcp google-workspace [ARGS] [OPTIONS]
 
-╭─ Parameters ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ CUSTOMER --customer            The unique ID for the customer's Google Workspace account.                                                                   │
-│ DOMAIN --domain                The domain name. Use this flag to get groups from only one domain. To return all domains for a customer account, use the     │
-│                                --customer flag instead.                                                                                                     │
-│ CREDENTIALS --credentials      The path to the credentials file. [default: credentials.json]                                                                │
-│ MAX-GROUPS --max-groups        Maximum number of groups to fetch. [default: 30]                                                                             │
-│ FILES --files --empty-files    Files to discover MCP servers from. [default: ['~/AppData/Roaming/Claude/claude_desktop_config.json', '~/.cursor/mcp.json',  │
-│                                '~/.codeium/windsurf/mcp_config.json']]                                                                                      │
-│ SUBJECT-TYPE --subject-type    [default: group]                                                                                                             │
-│ RELATION --relation            [default: caller]                                                                                                            │
-│ RESOURCE-TYPE --resource-type  [default: tool]                                                                                                              │
-╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Parameters ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ CUSTOMER --customer                              The unique ID for the customer's Google Workspace account.                                          │
+│ DOMAIN --domain                                  The domain name. Use this flag to get groups from only one domain. To return all domains for a      │
+│                                                  customer account, use the --customer flag instead.                                                  │
+│ CREDENTIALS --credentials                        The path to the credentials file. [default: credentials.json]                                       │
+│ MAX-GROUPS --max-groups                          Maximum number of groups to fetch. [default: 30]                                                    │
+│ FILES --files --empty-files                      Files to discover MCP servers from. [default:                                                       │
+│                                                  ['~/AppData/Roaming/Claude/claude_desktop_config.json', '~/.cursor/mcp.json',                       │
+│                                                  '~/.codeium/windsurf/mcp_config.json']]                                                             │
+│ SUBJECT-TYPE --subject-type                      Pangea AuthZ subject type. [default: group]                                                         │
+│ RESOURCE-RELATION --resource-relation            Pangea AuthZ tuple relation for MCP resources. [default: reader]                                    │
+│ TOOL-RELATION --tool-relation                    Pangea AuthZ tuple relation for MCP tools. [default: caller]                                        │
+│ RESOURCE-RESOURCE-TYPE --resource-resource-type  Pangea AuthZ resource type for MCP resources. [default: resource]                                   │
+│ TOOL-RESOURCE-TYPE --tool-resource-type          Pangea AuthZ resource type for MCP tools. [default: tool]                                           │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
 ```bash
