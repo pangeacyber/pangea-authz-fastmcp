@@ -38,7 +38,7 @@ cli = [
 dev = [
     "google-api-python-client-stubs==1.30.0",
     "mypy==1.17.0",
-    "pangea-authn-fastmcp==0.2.0",
+    "pangea-authn-fastmcp==0.2.1",
     "pytest==8.4.1",
     "pytest-asyncio==1.1.0",
     "ruff==0.12.5",
