@@ -33,7 +33,7 @@ class CompositeMCPConfigTransport(MCPConfigTransport):
         if len(self.config.mcpServers) == 0:
             raise ValueError("No MCP servers defined in the config")
 
-        composite_server = FastMCP()  # type: ignore[var-annotated]
+        composite_server = FastMCP()
 
         for name, server in self.config.mcpServers.items():
             composite_server.mount(
