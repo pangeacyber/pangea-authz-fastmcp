@@ -9,7 +9,7 @@ authors = [
 ]
 requires-python = ">=3.11"
 dependencies = [
-    "fastmcp>=2.10.6",
+    "fastmcp>=2.11.0",
     "mcp>=1.12.3",
     "pangea-sdk>=6.4.0",
     "pydantic>=2.11.7",
@@ -38,7 +38,7 @@ cli = [
 dev = [
     "google-api-python-client-stubs==1.30.0",
     "mypy==1.17.1",
-    "pangea-authn-fastmcp==0.2.1",
+    "pangea-authn-fastmcp==0.3.0",
     "pytest==8.4.1",
     "pytest-asyncio==1.1.0",
     "ruff==0.12.7",
