@@ -13,7 +13,8 @@ from pangea.services.authz import BulkCheckRequestItem, Resource, Subject
 if TYPE_CHECKING:
     from collections.abc import Awaitable, Callable
 
-    from mcp.types import CallToolRequestParams, CallToolResult, ReadResourceRequestParams, ReadResourceResult
+    from fastmcp.tools.tool import ToolResult
+    from mcp.types import CallToolRequestParams, ReadResourceRequestParams, ReadResourceResult
     from pydantic import AnyUrl
 
 __version__ = version(__package__)
@@ -130,8 +131,8 @@ class PangeaAuthzMiddleware(Middleware):
     async def on_call_tool(
         self,
         context: MiddlewareContext[CallToolRequestParams],
-        call_next: CallNext[CallToolRequestParams, CallToolResult],
-    ) -> CallToolResult:
+        call_next: CallNext[CallToolRequestParams, ToolResult],
+    ) -> ToolResult:
         access_token: AccessToken | None = get_access_token()
 
         if context.fastmcp_context and access_token:

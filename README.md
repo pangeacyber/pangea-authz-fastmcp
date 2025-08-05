@@ -88,7 +88,7 @@ from pangea_authz_fastmcp import PangeaAuthzMiddleware
 
 oauth_provider = PangeaOAuthProvider(...)
 
-mcp= FastMCP(name="My MCP Server", auth=oauth_provider)
+mcp = FastMCP(name="My MCP Server", auth=oauth_provider)
 mcp.add_middleware(
     PangeaAuthzMiddleware(
         # Need an AuthN token to fetch the user's group memberships.
