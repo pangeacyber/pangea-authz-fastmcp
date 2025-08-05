@@ -20,7 +20,7 @@ async def get_subject_ids(
 
 
 def test_middleware() -> None:
-    mcp = FastMCP(name="My MCP Server")  # type: ignore[var-annotated]
+    mcp = FastMCP(name="My MCP Server")
     mcp.add_middleware(PangeaAuthzMiddleware(pangea_authz_token="pangea_authz_token", get_subject_ids=get_subject_ids))
     assert mcp.middleware
     assert len(mcp.middleware) == 1
