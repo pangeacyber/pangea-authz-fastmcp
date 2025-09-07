@@ -39,7 +39,7 @@ dev = [
     "google-api-python-client-stubs==1.30.0",
     "mypy==1.17.1",
     "pangea-authn-fastmcp==0.3.1",
-    "pytest==8.4.1",
+    "pytest==8.4.2",
     "pytest-asyncio==1.1.0",
     "ruff==0.12.10",
 ]
