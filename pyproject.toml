@@ -12,7 +12,7 @@ dependencies = [
     "fastmcp>=2.12.2",
     "mcp>=1.14.0",
     "pangea-sdk>=6.6.0",
-    "pydantic>=2.11.7",
+    "pydantic>=2.11.9",
 ]
 
 [project.scripts]
