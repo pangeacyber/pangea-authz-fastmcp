@@ -1286,7 +1286,7 @@ requires-dist = [
     { name = "beaupy", marker = "extra == 'cli'", specifier = ">=3.10.1" },
     { name = "cyclopts", marker = "extra == 'cli'", specifier = ">=3.24.0" },
     { name = "fastmcp", specifier = ">=2.12.4" },
-    { name = "google-api-python-client", marker = "extra == 'cli'", specifier = ">=2.183.0" },
+    { name = "google-api-python-client", marker = "extra == 'cli'", specifier = ">=2.184.0" },
     { name = "google-auth-httplib2", marker = "extra == 'cli'", specifier = ">=0.2.0" },
     { name = "google-auth-oauthlib", marker = "extra == 'cli'", specifier = ">=1.2.2" },
     { name = "mcp", specifier = ">=1.15.0" },
