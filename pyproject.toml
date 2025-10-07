@@ -31,7 +31,7 @@ cli = [
     "google-api-python-client>=2.183.0",
     "google-auth-httplib2>=0.2.0",
     "google-auth-oauthlib>=1.2.2",
-    "pyjson5>=1.6.9",
+    "pyjson5>=2.0.0",
 ]
 
 [dependency-groups]
