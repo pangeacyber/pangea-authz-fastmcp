@@ -1366,7 +1366,7 @@ requires-dist = [
     { name = "google-auth-oauthlib", marker = "extra == 'cli'", specifier = ">=1.2.2" },
     { name = "mcp", specifier = ">=1.18.0" },
     { name = "pangea-sdk", specifier = ">=6.8.0" },
-    { name = "pydantic", specifier = ">=2.12.2" },
+    { name = "pydantic", specifier = ">=2.12.3" },
     { name = "pyjson5", marker = "extra == 'cli'", specifier = ">=2.0.0" },
 ]
 provides-extras = ["cli"]
