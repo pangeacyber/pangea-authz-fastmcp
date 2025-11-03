@@ -11,7 +11,7 @@ from pangea.services import AuthN, AuthZ
 from pangea.services.authz import BulkCheckRequestItem, Resource, Subject
 
 if TYPE_CHECKING:
-    from collections.abc import Awaitable, Callable
+    from collections.abc import Awaitable, Callable, Sequence
 
     from fastmcp.tools.tool import ToolResult
     from mcp.server.lowlevel.helper_types import ReadResourceContents
@@ -165,8 +165,8 @@ class PangeaAuthzMiddleware(Middleware):
     async def on_read_resource(
         self,
         context: MiddlewareContext[ReadResourceRequestParams],
-        call_next: CallNext[ReadResourceRequestParams, list[ReadResourceContents]],
-    ) -> list[ReadResourceContents]:
+        call_next: CallNext[ReadResourceRequestParams, Sequence[ReadResourceContents]],
+    ) -> Sequence[ReadResourceContents]:
         access_token: AccessToken | None = get_access_token()
 
         if context.fastmcp_context and access_token:
