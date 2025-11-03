@@ -29,7 +29,7 @@ cli = [
     "beaupy>=3.10.2",
     "cyclopts>=4.2.1",
     "google-api-python-client>=2.186.0",
-    "google-auth-httplib2>=0.2.0",
+    "google-auth-httplib2>=0.2.1",
     "google-auth-oauthlib>=1.2.2",
     "pyjson5>=2.0.0",
 ]
