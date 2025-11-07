@@ -1300,7 +1300,7 @@ requires-dist = [
     { name = "google-auth-httplib2", marker = "extra == 'cli'", specifier = ">=0.2.1" },
     { name = "google-auth-oauthlib", marker = "extra == 'cli'", specifier = ">=1.2.3" },
     { name = "mcp", specifier = ">=1.20.0" },
-    { name = "pangea-sdk", specifier = ">=6.10.0" },
+    { name = "pangea-sdk", specifier = ">=6.11.0" },
     { name = "pydantic", specifier = ">=2.12.3" },
     { name = "pyjson5", marker = "extra == 'cli'", specifier = ">=2.0.0" },
 ]
@@ -1318,7 +1318,7 @@ dev = [
 
 [[package]]
 name = "pangea-sdk"
-version = "6.10.0"
+version = "6.11.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiohttp" },
@@ -1332,9 +1332,9 @@ dependencies = [
     { name = "typing-extensions" },
     { name = "yarl" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/cd/79/a1117c5c5b3d20b59b7c9f6d92c52f4bd32ffd414030c6fd3187778998dc/pangea_sdk-6.10.0.tar.gz", hash = "sha256:58d4b711d84f64188f3eae08213e6abc214e7a30591644b3b67d33b2f5974390", size = 139216, upload-time = "2025-10-29T18:40:12.583Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/27/55/c1ffa6fbd647cd29b55b964c181cdfe866d2b820f3cc5664662f3dad6789/pangea_sdk-6.11.0.tar.gz", hash = "sha256:38a0be4df9dac9ef694a9e51d5c20666874b9b152700d383459a5988f4d9db26", size = 139257, upload-time = "2025-11-04T16:40:43.245Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b8/8a/52f850c58a1ba3ba73232637b31447801302cf7d7fc1492d6f625910d06b/pangea_sdk-6.10.0-py3-none-any.whl", hash = "sha256:29df77531fe72e3b5d730d270e820fccf45ea59f37d4c90b587213197f93fd36", size = 170730, upload-time = "2025-10-29T18:40:11.31Z" },
+    { url = "https://files.pythonhosted.org/packages/81/ed/0770523f8c766d34022bcb5213c49cbbe6bc06a05ab0e73b724463848874/pangea_sdk-6.11.0-py3-none-any.whl", hash = "sha256:ddf49a98f39ebb5af9614ef5f1e431402bf45c32e87893d38cab6cbe4f6bc6b0", size = 170771, upload-time = "2025-11-04T16:40:42.16Z" },
 ]
 
 [[package]]
