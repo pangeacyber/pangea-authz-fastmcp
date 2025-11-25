@@ -27,7 +27,7 @@ Changelog = "https://github.com/pangeacyber/pangea-authz-fastmcp/releases"
 [project.optional-dependencies]
 cli = [
     "beaupy>=3.10.2",
-    "cyclopts>=4.2.1",
+    "cyclopts>=4.2.4",
     "google-api-python-client>=2.187.0",
     "google-auth-httplib2>=0.2.1",
     "google-auth-oauthlib>=1.2.3",
