@@ -1248,7 +1248,7 @@ wheels = [
 
 [[package]]
 name = "pangea-authn-fastmcp"
-version = "0.3.1"
+version = "0.3.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "fastmcp" },
@@ -1258,9 +1258,9 @@ dependencies = [
     { name = "pydantic" },
     { name = "starlette" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f8/a7/c91364ad4d98327e9b0554d2e183b0761ab53c61853030c80215b3796304/pangea_authn_fastmcp-0.3.1.tar.gz", hash = "sha256:acde58950678c3f205d030a793afad107ff03e273cc387a36e2c83b65aed205e", size = 105970, upload-time = "2025-08-19T19:43:14.396Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ee/71/b9dfa6b2aef2702bd14460ae5ffb9cf295acf51df4d04c4acf9dd2ab6cba/pangea_authn_fastmcp-0.3.2.tar.gz", hash = "sha256:d5ef6b0e4103de9e8422256a566f33f576431e9810bb768de6dd15f032651bbc", size = 134303, upload-time = "2025-11-18T15:04:18.256Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/25/59/95db126045fc74ee55ed6d13a4c9f25d5735a153a543a55fc45660240fa0/pangea_authn_fastmcp-0.3.1-py3-none-any.whl", hash = "sha256:99708e2ab90470ce64a2c4e9c38e1f3994e792e37b68927e930eef764f266273", size = 10502, upload-time = "2025-08-19T19:43:13.03Z" },
+    { url = "https://files.pythonhosted.org/packages/18/9f/864cd8e3c597760a108ecd6f6daf77b559994f7dd46ed0f7fd4f739fe02c/pangea_authn_fastmcp-0.3.2-py3-none-any.whl", hash = "sha256:7a88bd3da5a3ed116b1cf291dcf590c928a0980fe56b43be2ef479ac7527ce8b", size = 10504, upload-time = "2025-11-18T15:04:17.302Z" },
 ]
 
 [[package]]
@@ -1313,7 +1313,7 @@ provides-extras = ["cli"]
 dev = [
     { name = "google-api-python-client-stubs", specifier = "==1.31.0" },
     { name = "mypy", specifier = "==1.18.2" },
-    { name = "pangea-authn-fastmcp", specifier = "==0.3.1" },
+    { name = "pangea-authn-fastmcp", specifier = "==0.3.2" },
     { name = "pytest", specifier = "==9.0.1" },
     { name = "pytest-asyncio", specifier = "==1.3.0" },
     { name = "ruff", specifier = "==0.14.5" },
