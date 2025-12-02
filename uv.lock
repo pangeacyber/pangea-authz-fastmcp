@@ -1297,7 +1297,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "beaupy", marker = "extra == 'cli'", specifier = ">=3.10.2" },
-    { name = "cyclopts", marker = "extra == 'cli'", specifier = ">=4.2.4" },
+    { name = "cyclopts", marker = "extra == 'cli'", specifier = ">=4.3.0" },
     { name = "fastmcp", specifier = "~=2.13.1.0" },
     { name = "google-api-python-client", marker = "extra == 'cli'", specifier = ">=2.187.0" },
     { name = "google-auth-httplib2", marker = "extra == 'cli'", specifier = ">=0.2.1" },
