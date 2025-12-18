@@ -41,7 +41,7 @@ dev = [
     "pangea-authn-fastmcp==0.3.2",
     "pytest==9.0.1",
     "pytest-asyncio==1.3.0",
-    "ruff==0.14.7",
+    "ruff==0.14.9",
 ]
 
 [build-system]
