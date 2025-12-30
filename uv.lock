@@ -1537,7 +1537,7 @@ requires-dist = [
     { name = "google-api-python-client", marker = "extra == 'cli'", specifier = ">=2.187.0" },
     { name = "google-auth-httplib2", marker = "extra == 'cli'", specifier = ">=0.3.0" },
     { name = "google-auth-oauthlib", marker = "extra == 'cli'", specifier = ">=1.2.3" },
-    { name = "mcp", specifier = ">=1.24.0" },
+    { name = "mcp", specifier = ">=1.25.0" },
     { name = "pangea-sdk", specifier = ">=6.13.0" },
     { name = "pydantic", specifier = ">=2.12.5" },
     { name = "pyjson5", marker = "extra == 'cli'", specifier = ">=2.0.0" },
